@@ -2,9 +2,9 @@ function timer(secs) {
     if (timerInterval) {
         clearInterval(timerInterval);
     }
-    
+
     const timerDisplay = document.getElementById('timer');
-    
+    const timerBar = document.getElementById("timer-bar")
     timerInterval = setInterval(() => {
         const minutes = Math.floor(secs / 60);
         const seconds = secs % 60;
@@ -17,6 +17,7 @@ function timer(secs) {
             timerDisplay.innerText = "Time's up!";
             endGame();
         }
+
     }, 1000);
 }
 
@@ -45,7 +46,7 @@ function startGame(difficulty) {
         case 'easy': timeLimit = 60; break;
         case 'medium': timeLimit = 45; break;
         case 'hard': timeLimit = 30; break;
-        default: timeLimit = 30;
+        default: timeLimit = 10;
     }
     
     timer(timeLimit);
@@ -54,11 +55,12 @@ function startGame(difficulty) {
 function generateRandomWord(){
     let word = wordList[Math.floor(Math.random() * wordList.length)];
     return word;
-}
+    }
+
 
 function showResult(score,words){
     return (score / words)* 100
-}
+} 
 
 function main() {
     console.log('Initializing game...');
@@ -164,7 +166,7 @@ function main() {
         console.log('Game ending...');
         gameActive = false;
         userInputElement.disabled = true;
-        
+        userInputElement.value = '';
         const finalScore = (score / words) * 100;
         console.log('Final game results:', {
             totalWords: words,
@@ -179,13 +181,14 @@ function main() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: white;
+            background: linear-gradient(#673AB7,#512DA8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            box-shadow: 10 0 10px rgba(0,0,0,0.5);
             z-index: 1000;
             text-align: center;
             min-width: 300px;
+            font-family:"Galindo",sans-serif;
         `;
         
         popup.innerHTML = `
@@ -203,3 +206,6 @@ function main() {
     console.log('Game initialization complete');
 }
 
+function timerBar(){
+
+}

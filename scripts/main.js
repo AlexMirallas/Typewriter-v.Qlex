@@ -6,9 +6,10 @@ let divWordShown = document.getElementById("wordChosen");
 let userInputElement = document.getElementById("user-input");
 let submitWordButton = document.getElementById("submit-word");
 let scoreSection = document.getElementById("score-section")
-
 let gameActive = false;
 let timerInterval = null;
+
+
 
 // Start the game logic when page loads
 console.log('Starting main game function');
